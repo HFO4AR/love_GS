@@ -19,10 +19,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "gpio.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdlib.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,7 +43,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+int r;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -118,11 +118,20 @@ int main(void)
   while (1)
   {
 //		lightInit();
-		light(0);
-		light(2);
-		light(0);
-		light(1);
-		light(0);
+//		int arr[8]={1,0,0,0,1,2,1,2};
+//		for (int i=0;i<8;i++){
+//			light(arr[i]);
+//		}
+		r=rand();
+		
+		if (r<=RAND_MAX/3*1){
+			light(0);
+		}else if (r<=RAND_MAX/3*2){
+			light(1);
+		}else{
+			light(2);
+		}
+		
 		
 //		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET);
 //		HAL_Delay(1000);
