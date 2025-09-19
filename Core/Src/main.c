@@ -43,13 +43,35 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int a,cont;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void light(int a){
+	if (a==0){
+		HAL_GPIO_WritePin(GPIOA,LED_blue_Pin,GPIO_PIN_RESET);
+		HAL_Delay(100);
+		HAL_GPIO_WritePin(GPIOA,LED_blue_Pin,GPIO_PIN_SET);
+		HAL_Delay(100);
+	}else if(a==1){
+		HAL_GPIO_WritePin(GPIOA,LED_red_Pin,GPIO_PIN_RESET);
+		HAL_Delay(100);
+		HAL_GPIO_WritePin(GPIOA,LED_red_Pin,GPIO_PIN_SET);
+		HAL_Delay(100);
+	}else{
+		HAL_GPIO_WritePin(GPIOB,LED_green_Pin,GPIO_PIN_RESET);
+		HAL_Delay(100);
+		HAL_GPIO_WritePin(GPIOB,LED_green_Pin,GPIO_PIN_SET);
+		HAL_Delay(100);
+	}
+}
+void lightInit(void){
+	HAL_GPIO_WritePin(GPIOA,LED_blue_Pin,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA,LED_red_Pin,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB,LED_green_Pin,GPIO_PIN_SET);
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -61,7 +83,6 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
-
 int main(void)
 {
 
@@ -93,28 +114,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+	lightInit();
   while (1)
   {
-
+//		lightInit();
+		light(0);
+		light(2);
+		light(0);
+		light(1);
+		light(0);
+		
 //		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET);
 //		HAL_Delay(1000);
-		
-		a=HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6);
-		if(a==1){
-			HAL_Delay(500);
-			if(a==1){
-				cont+=a;
-			}else{
-				continue;
-			}
-		}
-		
-		if (cont%2==1){
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET);
-			
-		}else{
-			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET);
-		}
+
 		
 		
 		
