@@ -1,0 +1,22 @@
+--cpu Cortex-M3
+"love_gs\startup_stm32f103xb.o"
+"love_gs\main.o"
+"love_gs\gpio.o"
+"love_gs\stm32f1xx_it.o"
+"love_gs\stm32f1xx_hal_msp.o"
+"love_gs\stm32f1xx_hal_gpio_ex.o"
+"love_gs\stm32f1xx_hal.o"
+"love_gs\stm32f1xx_hal_rcc.o"
+"love_gs\stm32f1xx_hal_rcc_ex.o"
+"love_gs\stm32f1xx_hal_gpio.o"
+"love_gs\stm32f1xx_hal_dma.o"
+"love_gs\stm32f1xx_hal_cortex.o"
+"love_gs\stm32f1xx_hal_pwr.o"
+"love_gs\stm32f1xx_hal_flash.o"
+"love_gs\stm32f1xx_hal_flash_ex.o"
+"love_gs\stm32f1xx_hal_exti.o"
+"love_gs\system_stm32f1xx.o"
+--strict --scatter "love_GS\love_GS.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "love_GS.map" -o love_GS\love_GS.axf
